@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stage, Layer, Rect } from 'react-konva';
+import { Stage, Layer, Rect } from './shapes';
 import './styles.scss';
 
 const { useState } = React;
@@ -9,18 +9,10 @@ const stageSize = {
     height: screen.height / 2
 };
 
-const cursorType = {
-    default: 'default',
-    move: 'move'
-};
-
 export const Designer = () => {
-    const [cursor, setCursor] = useState(cursorType.default);
-
     return (
         <Stage
             className="base-stage"
-            style={{ cursor }}
             width={stageSize.width}
             height={stageSize.height}>
             <Layer>
@@ -32,8 +24,6 @@ export const Designer = () => {
                     fill={'#2e0fd0'}
                     shadowBlur={5}
                     draggable
-                    onMouseEnter={() => setCursor(cursorType.move)}
-                    onMouseLeave={() => setCursor(cursorType.default)}
                 />
             </Layer>
         </Stage>
